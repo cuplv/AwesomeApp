@@ -8,14 +8,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-
-
+import android.os.Handler;
+import android.os.Message;
 import java.util.List;
-
 import android.view.View;
 import android.view.ViewGroup;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+
 
 public class MainActivity extends AppCompatActivity {
+
+  static protected int SEND_CODE = 1;
+  static protected String MSG_KEY = "received";
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +43,29 @@ public class MainActivity extends AppCompatActivity {
       });
   }
 
-  public int recycleItems(ViewGroup layout) {
-    for (int i = 0; i < layout.getChildCount(); i++) {
-      View v = layout.getChildAt(i);
-      layout.removeViewAt(i);
-    }
+  public void showDialog(Context context) {
+    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
 
-    return 0;
+    String title = "Empty Field(s)";
+    String message = "Please ensure all fields are contain data";
+
+    dialogBuilder.setMessage(message);
+
+    dialogBuilder.setNegativeButton("OK",
+      new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+
+        }
+      });
+    dialogBuilder.setPositiveButton("Cancel",
+      new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+                // continue with delete
+        }
+      });
+
+    dialogBuilder.create();
+    dialogBuilder.show();
   }
 }
