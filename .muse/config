@@ -1,0 +1,8 @@
+build          = "gradlew"
+arguments      = [ "assembleDebug" ]
+jdk11          = false
+androidVersion = 28
+tools          = []
+customTools    = [
+"https://raw.githubusercontent.com/cuplv/biggroum/fix_docker/python/fixrgraph/musedev/biggroumcheck.sh"
+]
