@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
       new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
+		Log.i("click:", "I was clicked!");
+		Log.i("click:", "I was clicked!");
 
         }
       });
