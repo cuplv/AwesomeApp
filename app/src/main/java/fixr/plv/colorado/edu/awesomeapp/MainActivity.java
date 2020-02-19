@@ -25,8 +25,9 @@ import java.util.List;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
             .setAction("Action", null).show();
         }
       });
+    Button b = findViewById(R.id.button2);
+    b.setOnClickListener(this);
   }
 
   public void showDialog(Context context) {
@@ -71,4 +74,17 @@ public class MainActivity extends AppCompatActivity {
     dialogBuilder.create();
     dialogBuilder.show();
   }
+
+    @Override
+    public void onClick(View v) {
+        AlertDialog.Builder d = new AlertDialog.Builder(this);
+        d.getContext().toString();
+        d.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                Log.i("","");
+            }
+        });
+        d.show();
+    }
 }
