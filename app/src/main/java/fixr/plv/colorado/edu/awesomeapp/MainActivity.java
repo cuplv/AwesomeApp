@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       });
 
     dialogBuilder.create();
-    // dialogBuilder.show();
+    dialogBuilder.show();
   }
 
     @Override
