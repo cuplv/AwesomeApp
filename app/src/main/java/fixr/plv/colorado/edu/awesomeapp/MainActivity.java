@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String message = "Please ensure all fields are contain data";
 
     dialogBuilder.setMessage(message);
+    dialogBuilder.setTitle("test title");
 
     dialogBuilder.setNegativeButton("OK",
       new DialogInterface.OnClickListener() {
