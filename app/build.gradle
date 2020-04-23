@@ -2,15 +2,36 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+
     defaultConfig {
         applicationId "fixr.plv.colorado.edu.awesomeapp"
         minSdkVersion 22
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
     }
+
     buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-Debug'
+            minifyEnabled false
+            ext.enableCrashlytics = false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -23,6 +44,39 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:design:28.0.0'
+
+    // Support libraries
+    implementation dependenciesList.supportGridLayout
+    implementation dependenciesList.supportAppcompatV4
+    implementation dependenciesList.supportAppcompatV7
+    implementation dependenciesList.supportCardView
+    implementation dependenciesList.supportRecyclerView
+    implementation dependenciesList.supportMaterialDesign
+    implementation dependenciesList.supportCustomTabs
+    implementation dependenciesList.supportConstraintLayout
+    implementation dependenciesList.supportAnimation
+
+    implementation dependenciesList.mapboxMapSdk
+    implementation dependenciesList.mapboxTurf
+    implementation dependenciesList.mapboxServices
+
+    // Mapbox plugins
+    implementation dependenciesList.mapboxPluginBuilding
+    implementation dependenciesList.mapboxPluginPlaces
+    implementation dependenciesList.mapboxPluginLocalization
+    implementation dependenciesList.mapboxPluginTraffic
+    implementation dependenciesList.mapboxPluginMarkerView
+    implementation dependenciesList.mapboxPluginAnnotation
+    implementation dependenciesList.mapboxPluginScalebar
+
+    // Other dependencies
+    implementation dependenciesList.gson
+    implementation dependenciesList.baseFab
+    implementation dependenciesList.materialStyleDialog
+    implementation dependenciesList.materialDialogsCommons
+    implementation dependenciesList.multiDex
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
